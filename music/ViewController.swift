@@ -16,6 +16,7 @@ class ViewController: UIViewController
     
     @IBOutlet var sliVol: UISlider!
     @IBOutlet var lblVOl: UILabel!
+    @IBOutlet var btnPause: UIButton!
     
     override func viewDidLoad()
     {
@@ -45,7 +46,17 @@ class ViewController: UIViewController
     //stop button
     @IBAction func btnStop_Touch(sender: AnyObject)
     {
-        player.stop()
+        if (btnPause.titleLabel!.text == "Pause")
+        {
+            player.pause()
+            btnPause.setTitle("Unpause", forState: UIControlState.Normal)
+        }
+        else
+        {
+            player.play()
+            btnPause.setTitle("Pause", forState: UIControlState.Normal)
+        }
+        
     }
     
     @IBAction func sliVol_Slide(sender: AnyObject)
